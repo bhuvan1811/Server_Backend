@@ -1,12 +1,19 @@
 const mongoose = require("mongoose");
 const app = require("./app");
 
+console.log("App starting...");
+console.log("Connecting to DB...");
+
 mongoose
-  .connect("mongodb+srv://bhuvansharma1811:LP76NQoUzHLxVEiz@cluster0.xeshggt.mongodb.net/testDb?retryWrites=true&w=majority")
+  .connect("mongodb+srv://bhuvansharma1811:LP76NQoUzHLxVEiz@cluster0.xeshggt.mongodb.net/testDb?retryWrites=true&w=majority", {
+    serverSelectionTimeoutMS: 5000 // 👈 VERY IMPORTANT
+  })
   .then(() => {
-    console.log("Database connected");
+    console.log("✅ Database connected");
     app.listen(3000, () => {
-      console.log("Server running on port 3000");
+      console.log("🚀 Server running on port 3000");
     });
   })
-  .catch((err) => console.error(err));
+  .catch((err) => {
+    console.error("❌ DB ERROR:", err);
+  });
