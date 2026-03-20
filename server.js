@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const app = require("./app");
 
 mongoose
-  .connect("mongodb+srv://bhuvansharma1811:LP76NQoUzHLxVEiz@cluster0.xeshggt.mongodb.net/testDb")
+  .connect("mongodb+srv://bhuvansharma1811:LP76NQoUzHLxVEiz@cluster0.xeshggt.mongodb.net/?appName=Cluster0")
   .then(() => {
     console.log("Database connected");
     app.listen(3000, () => {
